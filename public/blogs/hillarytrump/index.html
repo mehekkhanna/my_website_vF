@@ -82,8 +82,7 @@
                             
                                 <span class="image main"><img src="/img/blogs/pic01.jpg" alt="" /></span>
                             
-                            <pre><code class="language-{r" data-lang="{r">knitr::opts_chunk$set(echo = TRUE)
-</code></pre><h2 id="2016-california-contributors-plots">2016 California Contributors plots</h2>
+                            <h2 id="2016-california-contributors-r-code">2016 California Contributors (R Code)</h2>
 <p>This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below:</p>
 <p>We started by importing the California contributors dataset, the zip code data base and merged both datasets.</p>
 <pre><code class="language-{r," data-lang="{r,">
@@ -145,7 +144,7 @@ hillary_trump_top10 &lt;- hillary + trump +
                aspect.ratio = 9/4,
                plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = &quot;bold&quot;))
 
-</code></pre><h2 id="plot-created">Plot created</h2>
+</code></pre><h2 id="2016-california-contributors-plot">2016 California Contributors (Plot)</h2>
 <pre><code class="language-{r" data-lang="{r">plot(hillary_trump_top10)
 </code></pre>
                         </div>

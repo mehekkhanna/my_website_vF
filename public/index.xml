@@ -26,7 +26,7 @@
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/hillarytrump/</guid>
-      <description>knitr::opts_chunk$set(echo = TRUE) 2016 California Contributors plots This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below:
+      <description>2016 California Contributors (R Code) This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below:
 We started by importing the California contributors dataset, the zip code data base and merged both datasets.</description>
     </item>
     
