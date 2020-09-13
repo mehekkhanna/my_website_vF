@@ -11,20 +11,15 @@ slug: HillaryTrump
 title: Hillary vs. Trump
 ---
 
----
-title: "blog5.md"
-output: html_document
----
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## 2016 California Contributors plots
 
-# This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. 
+This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below: 
 
-For the challenge, we started by importing the California contributors dataset, the zip code data base and merged both datasets.
+We started by importing the California contributors dataset, the zip code data base and merged both datasets.
 
 ```{r, load_CA_data, warnings= FALSE, message=FALSE}
 
@@ -99,5 +94,5 @@ hillary_trump_top10 <- hillary + trump +
 ## Plot created
 
 ```{r hillary_trump_top10 , echo=FALSE}
-plot(hillary_trump_top10 )
+plot(hillary_trump_top10)
 ```
