@@ -96,5 +96,5 @@ p1 <- ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) +
   labs(title = "Top 25 wine consuming countries", x="Wine servings", y="Country") +
   theme_bw()
   
-p1
+plot(p1)
 ```
