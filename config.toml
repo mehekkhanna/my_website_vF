@@ -37,8 +37,8 @@ disqusShortname = ""
 
   # Navigation Section
   [params.navigation]
-    title = "Forty"
-    subtitle = "By HTML5 Up"
+    title = "Mehek Khanna"
+    # subtitle = "By HTML5 Up"
     menu = "Menu"
     # Optional logo as brand stored in img/
     # logo = "logo.png"
@@ -52,12 +52,12 @@ disqusShortname = ""
       url = "blogs"
 
     [[params.navigation.links]]
-      name = "Generic Blog"
-      url = "blogs/ipsum"
+#      name = "Generic Blog"
+#      url = "blogs/ipsum"
 
     [[params.navigation.links]]
-      name = "Elements"
-      url = "elements.html"
+#      name = "Elements"
+#      url = "elements.html"
 
     # Add custom links here by uncommenting code below. To remove links just delete
     # the [[params.navigation.links]] map associated with that link. Copy and paste
@@ -81,8 +81,8 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Forty"
-    subtitle = "A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP\nAND RELEASED UNDER THE CREATIVE COMMONS."
+    title = "Hi, my name is Mehek"
+    subtitle = "A website to showcase statistical analysis conducted in R."
     buttonText = "Get Started"
 
 
@@ -110,22 +110,22 @@ disqusShortname = ""
       url = "blogs/magna"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
-      image = "pic04.jpg"
-      url = "blogs/ipsum"
+#      title = "Ipsum"
+#      subtitle = "Nisl Sed Aliquam"
+#      image = "pic04.jpg"
+#      url = "blogs/ipsum"
 
     [[params.tiles.showcase]]
-      title = "Consequat"
-      subtitle = "Ipsum Dolor Sit Amet"
-      image = "pic05.jpg"
-      url = "blogs/ipsum"
+#      title = "Consequat"
+#      subtitle = "Ipsum Dolor Sit Amet"
+#      image = "pic05.jpg"
+#      url = "blogs/ipsum"
 
     [[params.tiles.showcase]]
-      title = "Etiam"
-      subtitle = "Feugiat Amet Tempus"
-      image = "pic06.jpg"
-      url = "blogs/ipsum"
+#      title = "Etiam"
+#      subtitle = "Feugiat Amet Tempus"
+#      image = "pic06.jpg"
+#      url = "blogs/ipsum"
     # You can make more showcases by copy and pasting the code above
 
   [params.blog]
@@ -172,17 +172,17 @@ disqusShortname = ""
     # by copying the corresponding map with frontmatter code.
     [[params.contact.email]]
     title = "Email"
-    email = "example@domain.com"
+    email = "mkhanna.mam2021@london.edu"
 
     [[params.contact.phone]]
     title = "Phone"
-    phone = "(000) 000-0000 x1234"
+    phone = "+44 01234567"
 
     [[params.contact.address]]
     title = "Address"
-    street = "Street"
-    city = "City, ST 00000"
-    country = "Country"
+    street = "London Business School"
+    city = "London"
+    country = "United Kingdom"
 
   # Footer section
   [params.footer]
@@ -197,7 +197,7 @@ disqusShortname = ""
 
     [[params.footer.social]]
       icon = "fa-facebook"
-      url= "https://www.facebook.com"
+      url= "https://www.facebook.com/LondonBusinessSchool"
       label = "Facebook"
 
     [[params.footer.social]]
@@ -207,15 +207,15 @@ disqusShortname = ""
     
     [[params.footer.social]]
       icon = "fa-github"
-      url= "https://www.github.com"
+      url= "https://github.com/mehekkhanna"
       label = "GitHub"
 
     [[params.footer.social]]
       icon = "fa-linkedin"
-      url= "https://www.linkedin.com"
+      url= "https://www.linkedin.com/in/mehek-khanna/"
       label = "LinkedIn"
 
     [[params.footer.quicklinks]]
-      text = "Design: "
-      url= "https://www.html5up.net"
-      alt = "HTML5 UP"
+#      text = "Design: "
+#      url= "https://www.html5up.net"
+#      alt = "HTML5 UP"
