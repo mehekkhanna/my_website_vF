@@ -86,15 +86,58 @@
 <h2 id="output-html_document">title: &ldquo;WineConsumption.md&rdquo;
 output: html_document</h2>
 <pre><code class="language-{r" data-lang="{r">knitr::opts_chunk$set(echo = TRUE)
-</code></pre><h2 id="r-markdown">R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<pre><code class="language-{r" data-lang="{r">summary(cars)
-</code></pre><h2 id="including-plots">Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<pre><code class="language-{r" data-lang="{r">plot(pressure)
-</code></pre><p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+</code></pre><pre><code class="language-{r," data-lang="{r,">knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size=&quot;small&quot;)   # slightly smaller font for code
+options(digits = 3)
 
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = &quot;center&quot;
+)
+</code></pre><pre><code class="language-{r" data-lang="{r">library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+</code></pre><h1 id="where-do-people-drink-the-most-beer-wine-and-spirits">Where Do People Drink The Most Beer, Wine And Spirits?</h1>
+<p>First, lets load our dataframe.</p>
+<pre><code class="language-{r," data-lang="{r,">library(fivethirtyeight)
+data(drinks)
+</code></pre><p>Now we will check the variable types with glimpse and check if there are any missing values with skim.</p>
+<pre><code class="language-{r" data-lang="{r">glimpse(drinks)
+skim(drinks)
+</code></pre><p>There are no missing values, the variables are either integers, character or double.</p>
+<p>Let&rsquo;s make a plot that shows the top 25 beer consuming countries.</p>
+<pre><code class="language-{r" data-lang="{r">beer_25 &lt;- drinks %&gt;% 
+  arrange(desc(beer_servings)) %&gt;% 
+  top_n(25, beer_servings)
+
+ggplot(beer_25,aes(x=beer_servings, y=reorder(country, beer_servings))) + 
+  geom_col() +
+  geom_text(aes(label = beer_servings, hjust = -0.5)) +
+  labs(title = &quot;Top 25 beer consuming countries&quot;, x=&quot;Beer servings&quot;, y=&quot;Country&quot;) +
+  theme_bw()
+</code></pre><p>Then, let&rsquo;s look at the top 25 wine consuming countries.</p>
+<pre><code class="language-{r" data-lang="{r">wine_25 &lt;- drinks %&gt;% 
+  arrange(desc(wine_servings)) %&gt;% 
+  top_n(25, wine_servings) 
+
+ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
+  geom_col() + 
+  geom_text(aes(label = wine_servings, hjust = -0.5)) +
+  labs(title = &quot;Top 25 wine consuming countries&quot;, x=&quot;Wine servings&quot;, y=&quot;Country&quot;) +
+  theme_bw()
+</code></pre>
                         </div>
                     </section>
             <!-- Disqus Inject -->

@@ -20,22 +20,79 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+```{r, setup}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+# Where Do People Drink The Most Beer, Wine And Spirits?
+
+First, lets load our dataframe.
+
+```{r, load_alcohol_data}
+library(fivethirtyeight)
+data(drinks)
+```
+
+
+Now we will check the variable types with glimpse and check if there are any missing values with skim.
+
+```{r glimpse_skim_data}
+glimpse(drinks)
+skim(drinks)
+```
+
+There are no missing values, the variables are either integers, character or double.
+
+Let's make a plot that shows the top 25 beer consuming countries.
+
+```{r beer_plot}
+beer_25 <- drinks %>% 
+  arrange(desc(beer_servings)) %>% 
+  top_n(25, beer_servings)
+
+ggplot(beer_25,aes(x=beer_servings, y=reorder(country, beer_servings))) + 
+  geom_col() +
+  geom_text(aes(label = beer_servings, hjust = -0.5)) +
+  labs(title = "Top 25 beer consuming countries", x="Beer servings", y="Country") +
+  theme_bw()
+```
+
+Then, let's look at the top 25 wine consuming countries.
+
+```{r wine_plot}
+wine_25 <- drinks %>% 
+  arrange(desc(wine_servings)) %>% 
+  top_n(25, wine_servings) 
+
+ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
+  geom_col() + 
+  geom_text(aes(label = wine_servings, hjust = -0.5)) +
+  labs(title = "Top 25 wine consuming countries", x="Wine servings", y="Country") +
+  theme_bw()
+```

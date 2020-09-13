@@ -36,8 +36,7 @@ We started by importing the California contributors dataset, the zip code data b
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/wineconsumption/</guid>
-      <description>title: &amp;ldquo;WineConsumption.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <description>title: &amp;ldquo;WineConsumption.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.width=6.75, fig.height=6.75, fig.align = &amp;quot;center&amp;quot; ) library(tidyverse) # Load ggplot2, dplyr, and all the other tidyverse packages library(mosaic) library(ggthemes) library(lubridate) library(fivethirtyeight) library(here) library(skimr) library(janitor) library(vroom) library(tidyquant) Where Do People Drink The Most Beer, Wine And Spirits?</description>
     </item>
     
     <item>
