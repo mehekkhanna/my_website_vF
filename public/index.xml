@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Forty</title>
+    <title>Portfolio Website for Mehek Khanna</title>
     <link>/</link>
-    <description>Recent content on Forty</description>
+    <description>Recent content on Portfolio Website for Mehek Khanna</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 31 Oct 2017 22:42:51 -0500</lastBuildDate>
@@ -18,6 +18,16 @@
       
       <guid>/blogs/aliquam/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>NYC</title>
+      <link>/blogs/nyc/</link>
+      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
+      
+      <guid>/blogs/nyc/</guid>
+      <description>title: &amp;ldquo;blog5.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
     </item>
     
     <item>

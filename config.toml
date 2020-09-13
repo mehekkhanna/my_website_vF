@@ -1,7 +1,7 @@
 # Site settings
 baseURL = "https://mehekkhanna.netlify.app"
 languageCode = "en-us"
-title = "Forty"
+title = "Portfolio Website for Mehek Khanna"
 theme = "forty"
 
 # Enter your tracking code to enable Google Analytics
@@ -19,8 +19,8 @@ disqusShortname = ""
   # CSS class.
 
   # Provide your metadata here.
-  name = "Your name"
-  description = "Your description"
+  name = "Mehek Khanna"
+  description = "A 23-year old Indian who is sick of self-isolation and looking to transiton from zoomie to roomie"
 
   # Link custom assets relative to /static
   custom_css = []
@@ -92,10 +92,10 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Aliquam"
+      title = "NYC"
       subtitle = "Ipsum Dolor Sit Amet"
       image = "pic01.jpg"
-      url = "blogs/aliquam"
+      url = "blogs/NYC"
 
     [[params.tiles.showcase]]
       title = "Tempus"
