@@ -21,6 +21,16 @@
     </item>
     
     <item>
+      <title>Aliquam</title>
+      <link>/blogs/aliquam/</link>
+      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
+      
+      <guid>/blogs/aliquam/</guid>
+      <description>title: &amp;ldquo;Gapminder.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+    </item>
+    
+    <item>
       <title>Hillary vs. Trump</title>
       <link>/blogs/hillarytrump/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
