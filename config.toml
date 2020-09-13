@@ -92,8 +92,8 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "HillaryTrump"
-      subtitle = "Ipsum Dolor Sit Amet"
+      title = "Hillary vs. Trump"
+      subtitle = "Hillary and Trump's top 10 cities with the highest contribution"
       image = "pic01.jpg"
       url = "blogs/HillaryTrump"
 
