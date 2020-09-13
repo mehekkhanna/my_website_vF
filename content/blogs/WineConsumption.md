@@ -90,9 +90,11 @@ wine_25 <- drinks %>%
   arrange(desc(wine_servings)) %>% 
   top_n(25, wine_servings) 
 
-ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
+p1 <- ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
   geom_col() + 
   geom_text(aes(label = wine_servings, hjust = -0.5)) +
   labs(title = "Top 25 wine consuming countries", x="Wine servings", y="Country") +
   theme_bw()
+  
+p1
 ```

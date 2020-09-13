@@ -132,11 +132,13 @@ ggplot(beer_25,aes(x=beer_servings, y=reorder(country, beer_servings))) +
   arrange(desc(wine_servings)) %&gt;% 
   top_n(25, wine_servings) 
 
-ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
+p1 &lt;- ggplot(wine_25, aes(x=wine_servings, y=reorder(country, wine_servings))) + 
   geom_col() + 
   geom_text(aes(label = wine_servings, hjust = -0.5)) +
   labs(title = &quot;Top 25 wine consuming countries&quot;, x=&quot;Wine servings&quot;, y=&quot;Country&quot;) +
   theme_bw()
+  
+p1
 </code></pre>
                         </div>
                     </section>
