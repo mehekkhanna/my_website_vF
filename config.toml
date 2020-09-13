@@ -92,10 +92,10 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "NYC"
+      title = "HillaryTrump"
       subtitle = "Ipsum Dolor Sit Amet"
       image = "pic01.jpg"
-      url = "blogs/NYC"
+      url = "blogs/HillaryTrump"
 
     [[params.tiles.showcase]]
       title = "Tempus"
