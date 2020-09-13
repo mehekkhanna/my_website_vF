@@ -82,7 +82,7 @@ disqusShortname = ""
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
     title = "Hi, my name is Mehek"
-    subtitle = "A website to showcase statistical analysis conducted in R."
+    subtitle = "A website to showcase statistical analysis conducted in R"
     buttonText = "Get Started"
 
 
@@ -109,19 +109,19 @@ disqusShortname = ""
       image = "pic03.jpg"
       url = "blogs/magna"
 
-    [[params.tiles.showcase]]
+#    [[params.tiles.showcase]]
 #      title = "Ipsum"
 #      subtitle = "Nisl Sed Aliquam"
 #      image = "pic04.jpg"
 #      url = "blogs/ipsum"
 
-    [[params.tiles.showcase]]
+#    [[params.tiles.showcase]]
 #      title = "Consequat"
 #      subtitle = "Ipsum Dolor Sit Amet"
 #      image = "pic05.jpg"
 #      url = "blogs/ipsum"
 
-    [[params.tiles.showcase]]
+#    [[params.tiles.showcase]]
 #      title = "Etiam"
 #      subtitle = "Feugiat Amet Tempus"
 #      image = "pic06.jpg"
