@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="A 23-year old Indian who is sick of self-isolation and looking to transiton from zoomie to roomie">
+	<meta name="author" content="Mehek Khanna">
+	<meta name="generator" content="Hugo 0.74.3" />
+	<title>Hillary vs. Trump &middot; Portfolio Website for Mehek Khanna</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Mehek Khanna</strong> <span></span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/blogs">Blogs</a></li>
+            
+                <li><a href="/"></a></li>
+            
+                <li><a href="/"></a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+                <li><a href="/blogs" class="button special fit">Get Started</a></li>
+            
+            
+                <li><a href="/" class="button fit">Log In</a></li>
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Hillary vs. Trump</h1>
+                            </header>
+                            
+                                <span class="image main"><img src="/img/blogs/pic07.jpg" alt="" /></span>
+                            
+                            <hr>
+<h2 id="output-html_document">title: &ldquo;blog5.md&rdquo;
+output: html_document</h2>
+<pre><code class="language-{r" data-lang="{r">knitr::opts_chunk$set(echo = TRUE)
+</code></pre><h2 id="r-markdown">R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<h1 id="challenge-2-2016-california-contributors-plots">Challenge 2: 2016 California Contributors plots</h1>
+<p>In this challenge we will reproduce the plots of the 2016 California Contributors, shown below.</p>
+<pre><code class="language-{r" data-lang="{r">
+knitr::include_graphics(here::here(&quot;images&quot;, &quot;challenge2.png&quot;), error = FALSE)
+
+</code></pre><p>Firstly, we will import the CA contributors dataset and the zip code data base and merge both.</p>
+<pre><code class="language-{r," data-lang="{r,">
+# Load dataframes
+CA_contributors_2016 &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;CA_contributors_2016.csv&quot;))
+zip_code &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
+
+# Changing the column zip of our zip_code dataframe to a numeric value
+zip_code &lt;- zip_code %&gt;% 
+  mutate(zip = as.numeric(zip))
+
+# Merging dataframes
+CA_contributors_2016 &lt;- CA_contributors_2016 %&gt;% 
+  inner_join(zip_code, by =  &quot;zip&quot;)
+
+</code></pre><p>Secondly, we will clean our dataframe and select/calculate the variables that will be used in our analysis.</p>
+<pre><code class="language-{r," data-lang="{r,">
+CA_contributors_2016_cleaned &lt;- CA_contributors_2016 %&gt;%
+  group_by(cand_nm,primary_city) %&gt;% 
+  summarise(total_amt = sum(contb_receipt_amt)) %&gt;% 
+  select(candidate = cand_nm, city = primary_city, money_raised = total_amt)
+
+</code></pre><p>Then, we will plot Trump&rsquo;s and Hillary&rsquo;s top 10 contribution cities graphs separately, and change its aesthetics.</p>
+<pre><code class="language-{r," data-lang="{r,">library(scales)
+
+# Plot Hillary's top 10 contribution cities
+hillary &lt;- CA_contributors_2016_cleaned %&gt;%
+  filter(candidate == &quot;Clinton, Hillary Rodham&quot;) %&gt;%
+  top_n(10, wt = money_raised) %&gt;% 
+  ggplot(aes(x = money_raised, y = reorder(city, money_raised))) + geom_col(fill = &quot;dodgerblue3&quot;) +   
+  facet_grid(.~candidate) +
+  labs(title = NULL, x = NULL, y = NULL) +
+  scale_x_continuous(labels = scales::dollar_format()) + 
+  theme_update(plot.title = element_text(hjust = 0.5)) + #center the title
+  theme(strip.background = element_rect(fill = &quot;grey&quot;), 
+        stip.text = element_text(size = 8, color = &quot;black&quot;),
+  ) + 
+  theme_bw()
+
+# Plot Trump's top 10 contribution cities
+trump &lt;- CA_contributors_2016_cleaned %&gt;%
+  filter(candidate == &quot;Trump, Donald J.&quot;) %&gt;%
+  top_n(10, wt = money_raised) %&gt;% 
+  ggplot(aes(x = money_raised, y = reorder(city, money_raised))) + geom_col(fill = &quot;brown3&quot;) +   
+  facet_grid(.~candidate) +
+  labs(title = NULL, x = NULL, y = NULL) +
+  scale_x_continuous(labels = scales::dollar_format()) + 
+  theme_update(plot.title = element_text(hjust = 0.5)) + #center the title
+  theme(strip.background = element_rect(fill = &quot;grey&quot;), 
+        stip.text = element_text(size = 8, color = &quot;black&quot;),
+  ) + 
+  theme_bw()
+
+</code></pre><p>Now using patchwork it is possible to join both graphs in a singular visualization</p>
+<pre><code class="language-{r,hillary_trump}" data-lang="{r,hillary_trump}">library(patchwork)
+
+# Combine them together and add a main title/x axis
+hillary_trump_top10 &lt;- hillary + trump +
+  plot_annotation(title = &quot;Where did candidates raise most money?&quot;, caption = &quot;Amount Raised&quot;) 
+  theme_update(plot.title = element_text(size = 10, hjust = 0.1, face = &quot;bold&quot;),
+               aspect.ratio = 9/4,
+               plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = &quot;bold&quot;))
+
+# Save it as a picture and set the correct proportion
+ggsave(&quot;hillary_trump_top10.jpg&quot;, plot = hillary_trump_top10, width = 9, height = 4, path = here::here(&quot;images&quot;))
+
+# Show created picture
+knitr::include_graphics(here::here(&quot;images&quot;, &quot;hillary_trump_top10.jpg&quot;))
+
+</code></pre><pre><code class="language-{r" data-lang="{r">summary(cars)
+</code></pre><h2 id="including-plots">Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<pre><code class="language-{r" data-lang="{r">plot(pressure)
+</code></pre><p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+                <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                    <li><a href="https://www.twitter.com" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                
+                    <li><a href="https://www.facebook.com/LondonBusinessSchool" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+                
+                    <li><a href="https://www.instagram.com" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                
+                    <li><a href="https://github.com/mehekkhanna" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                    <li><a href="https://www.linkedin.com/in/mehek-khanna/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Company Name</li>
+                
+                <li> <a href=""></a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>
