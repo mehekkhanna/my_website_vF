@@ -93,7 +93,7 @@ disqusShortname = ""
     
     [[params.tiles.showcase]]
       title = "Hillary vs. Trump"
-      subtitle = "Hillary and Trump's top 10 cities (in California) with the highest amount of voter contribution"
+      subtitle = "Top 10 cities in California with the highest amount (in $) of voter contribution (Hillary vs. Trump)"
       image = "pic01.jpg"
       url = "blogs/HillaryTrump"
 
