@@ -20,27 +20,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## 2016 California Contributors plots
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. 
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-# Challenge 2: 2016 California Contributors plots
-
-In this challenge we will reproduce the plots of the 2016 California Contributors, shown below.
-
-```{r challenge2, echo=FALSE, out.width="100%"}
-
-knitr::include_graphics(here::here("images", "challenge2.png"), error = FALSE)
-
-```
-
-Firstly, we will import the CA contributors dataset and the zip code data base and merge both.
+For the challenge, we started by importing the California contributors dataset, the zip code data base and merged both datasets.
 
 ```{r, load_CA_data, warnings= FALSE, message=FALSE}
 
-# Load dataframes
+# Loading dataframes
 CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
 zip_code <- vroom::vroom(here::here("data","zip_code_database.csv"))
 
@@ -51,10 +39,9 @@ zip_code <- zip_code %>%
 # Merging dataframes
 CA_contributors_2016 <- CA_contributors_2016 %>% 
   inner_join(zip_code, by =  "zip")
-
 ```
 
-Secondly, we will clean our dataframe and select/calculate the variables that will be used in our analysis.
+Next, we cleaned our dataframe and calculated the variables that were used in our analysis.
 
 ```{r, clean_data}
 
@@ -65,7 +52,7 @@ CA_contributors_2016_cleaned <- CA_contributors_2016 %>%
 
 ```
 
-Then, we will plot Trump's and Hillary's top 10 contribution cities graphs separately, and change its aesthetics.
+We then plotted Trump and Hillary's top 10 contribution cities graphs separately using the following R code.
 
 ```{r, hillary_trump_top10}
 library(scales)
@@ -98,11 +85,6 @@ trump <- CA_contributors_2016_cleaned %>%
   ) + 
   theme_bw()
 
-```
-
-Now using patchwork it is possible to join both graphs in a singular visualization
-
-```{r,hillary_trump}
 library(patchwork)
 
 # Combine them together and add a main title/x axis
@@ -112,25 +94,10 @@ hillary_trump_top10 <- hillary + trump +
                aspect.ratio = 9/4,
                plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = "bold"))
 
-# Save it as a picture and set the correct proportion
-ggsave("hillary_trump_top10.jpg", plot = hillary_trump_top10, width = 9, height = 4, path = here::here("images"))
-
-# Show created picture
-knitr::include_graphics(here::here("images", "hillary_trump_top10.jpg"))
-
 ```  
 
+## Plot created
 
-```{r cars}
-summary(cars)
+```{r hillary_trump_top10 , echo=FALSE}
+plot(hillary_trump_top10 )
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

@@ -86,17 +86,11 @@
 <h2 id="output-html_document">title: &ldquo;blog5.md&rdquo;
 output: html_document</h2>
 <pre><code class="language-{r" data-lang="{r">knitr::opts_chunk$set(echo = TRUE)
-</code></pre><h2 id="r-markdown">R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<h1 id="challenge-2-2016-california-contributors-plots">Challenge 2: 2016 California Contributors plots</h1>
-<p>In this challenge we will reproduce the plots of the 2016 California Contributors, shown below.</p>
-<pre><code class="language-{r" data-lang="{r">
-knitr::include_graphics(here::here(&quot;images&quot;, &quot;challenge2.png&quot;), error = FALSE)
-
-</code></pre><p>Firstly, we will import the CA contributors dataset and the zip code data base and merge both.</p>
+</code></pre><h2 id="2016-california-contributors-plots">2016 California Contributors plots</h2>
+<h1 id="this-was-a-project-that-we-created-during-our-course-to-understand-the-difference-in-contribution-received-in--bw-hillary-and-trump-in-2016-the-graphs-illustrate-the-top-10-cities-in-california-from-where-hillary-and-trump-recieved-their-contributions-from">This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from.</h1>
+<p>For the challenge, we started by importing the California contributors dataset, the zip code data base and merged both datasets.</p>
 <pre><code class="language-{r," data-lang="{r,">
-# Load dataframes
+# Loading dataframes
 CA_contributors_2016 &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;CA_contributors_2016.csv&quot;))
 zip_code &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
 
@@ -107,15 +101,14 @@ zip_code &lt;- zip_code %&gt;%
 # Merging dataframes
 CA_contributors_2016 &lt;- CA_contributors_2016 %&gt;% 
   inner_join(zip_code, by =  &quot;zip&quot;)
-
-</code></pre><p>Secondly, we will clean our dataframe and select/calculate the variables that will be used in our analysis.</p>
+</code></pre><p>Next, we cleaned our dataframe and calculated the variables that were used in our analysis.</p>
 <pre><code class="language-{r," data-lang="{r,">
 CA_contributors_2016_cleaned &lt;- CA_contributors_2016 %&gt;%
   group_by(cand_nm,primary_city) %&gt;% 
   summarise(total_amt = sum(contb_receipt_amt)) %&gt;% 
   select(candidate = cand_nm, city = primary_city, money_raised = total_amt)
 
-</code></pre><p>Then, we will plot Trump&rsquo;s and Hillary&rsquo;s top 10 contribution cities graphs separately, and change its aesthetics.</p>
+</code></pre><p>We then plotted Trump and Hillary&rsquo;s top 10 contribution cities graphs separately using the following R code.</p>
 <pre><code class="language-{r," data-lang="{r,">library(scales)
 
 # Plot Hillary's top 10 contribution cities
@@ -146,8 +139,7 @@ trump &lt;- CA_contributors_2016_cleaned %&gt;%
   ) + 
   theme_bw()
 
-</code></pre><p>Now using patchwork it is possible to join both graphs in a singular visualization</p>
-<pre><code class="language-{r,hillary_trump}" data-lang="{r,hillary_trump}">library(patchwork)
+library(patchwork)
 
 # Combine them together and add a main title/x axis
 hillary_trump_top10 &lt;- hillary + trump +
@@ -156,18 +148,9 @@ hillary_trump_top10 &lt;- hillary + trump +
                aspect.ratio = 9/4,
                plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = &quot;bold&quot;))
 
-# Save it as a picture and set the correct proportion
-ggsave(&quot;hillary_trump_top10.jpg&quot;, plot = hillary_trump_top10, width = 9, height = 4, path = here::here(&quot;images&quot;))
-
-# Show created picture
-knitr::include_graphics(here::here(&quot;images&quot;, &quot;hillary_trump_top10.jpg&quot;))
-
-</code></pre><pre><code class="language-{r" data-lang="{r">summary(cars)
-</code></pre><h2 id="including-plots">Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<pre><code class="language-{r" data-lang="{r">plot(pressure)
-</code></pre><p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-
+</code></pre><h2 id="plot-created">Plot created</h2>
+<pre><code class="language-{r" data-lang="{r">plot(hillary_trump_top10 )
+</code></pre>
                         </div>
                     </section>
             <!-- Disqus Inject -->

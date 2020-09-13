@@ -26,8 +26,7 @@
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/hillarytrump/</guid>
-      <description>title: &amp;ldquo;blog5.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <description>title: &amp;ldquo;blog5.md&amp;rdquo; output: html_document knitr::opts_chunk$set(echo = TRUE) 2016 California Contributors plots This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. For the challenge, we started by importing the California contributors dataset, the zip code data base and merged both datasets.</description>
     </item>
     
     <item>
