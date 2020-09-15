@@ -49,10 +49,12 @@ library(vroom)
 library(tidyquant)
 ```
 
+We first load the data for HIV prevalence and life expectancy from the gapminder dataset, followed by the World Bank data to get information on countries, indicators, regions etc.
 
 ```{r, get_data, cache=TRUE}
 
 # load gapminder HIV data
+
 hiv <- read_csv(here::here("data","adults_with_hiv_percent_age_15_49.csv"))
 life_expectancy <- read_csv(here::here("data","life_expectancy_years.csv"))
 
@@ -68,6 +70,7 @@ worldbank_data <- wb_data(country="countries_only", #countries only- no aggregat
                           end_date = 2016)
 
 # get a dataframe of information regarding countries, indicators, sources, regions, indicator topics, lending types, income levels,  from the World Bank API 
+
 countries <-  wbstats::wb_cachelist$countries
 
 ```
