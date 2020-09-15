@@ -17,6 +17,19 @@ This was a project that we created during our course to understand the differenc
 
 We started by importing the California contributors dataset, the zip code data base and merged both datasets.
 
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+```
+
 ```{r, load_CA_data, warnings= FALSE, message=FALSE}
 
 # Loading dataframes
