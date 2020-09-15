@@ -25,7 +25,7 @@ options(digits = 3)
 
 # default figure size
 knitr::opts_chunk$set(
-  fig.width=6.75, 
+  fig.width=9, 
   fig.height=6.75,
   fig.align = "center"
 )
@@ -101,5 +101,5 @@ What's interesting to note is that the 1st and the 25th largest wine consuming c
 
 Did you know that the reason why the French can eat vast amounts of egg, butter, cheese and still have a comparatively low heart disease is because their wine consumption (in moderation) nullifies the "bad" cholestrol production in the body. This is famously known as the "French Paradox".
 
-**INTERESTING FACT**
+**TIP**
 Drink to your heart's content to keep your heart healthy (like the French), but in moderation!
