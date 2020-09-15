@@ -11,11 +11,9 @@ slug: HillaryTrump
 title: Hillary vs. Trump
 ---
 
-## 2016 California Contributors (R Code)
+## 2016 California Contributors for Hilalary vs. Trump
 
-This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump received their contributions from. The R code is as shown below: 
-
-We started by importing the California contributors dataset, the zip code data base and merged both datasets.
+*This was a project that we created during our course in Applied Statistics to understand the difference in contribution received (in $) b/w Hillary and Trump in the US 2016 Presidential Elections.* 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -50,6 +48,8 @@ library(vroom)
 library(tidyquant)
 ```
 
+The graphs illustrate the top 10 cities (in California) from where Hillary and Trump received their contributions. To start off, we imported the California contributors dataset, the zip code data base and merged both datasets to get a new dataframe.
+
 ```{r, load_CA_data, warnings= FALSE, message=FALSE}
 
 # Loading dataframes
@@ -69,6 +69,8 @@ Next, we cleaned our dataframe and calculated the variables that were used in ou
 
 ```{r, clean_data}
 
+# Cleaning the data
+
 CA_contributors_2016_cleaned <- CA_contributors_2016 %>%
   group_by(cand_nm,primary_city) %>% 
   summarise(total_amt = sum(contb_receipt_amt)) %>% 
@@ -79,6 +81,7 @@ CA_contributors_2016_cleaned <- CA_contributors_2016 %>%
 We then plotted Trump and Hillary's top 10 contribution cities graphs separately using the following R code.
 
 ```{r, hillary_trump_top10}
+
 library(scales)
 
 # Plot Hillary's top 10 contribution cities
@@ -120,8 +123,15 @@ hillary_trump_top10 <- hillary + trump +
 
 ```  
 
-## 2016 California Contributors (Plot)
+Finally, with the help of ggplot() we visualised the top 10 cities (in terms of contribution amount) for Hillary Clinton and Donald Trump.
 
 ```{r hillary_trump_top10 , echo=FALSE}
-plot(hillary_trump_top10)
+hillary_trump_top10
 ```
+
+## Graphical analysis
+
+As can be seen in the graph above, there is variation between where the candidates got the highest contributions from. For e.g., while Hillary Clinton witnessed the highest contributions from San Fransisco, the same isn't true for Donald Trump. (Perhaps, people in San Fransisco don't really love Trump's policies and ideologies - well thank god for that!)
+
+What's interesting to note is that despite not winning the presidential elections, Hillary Clinton actually recieved more contributions from California than Trump did. This could mean that the people in California (at least in these top 10 cities) favour Hillary Clinton more than Trump, or it could also mean that a few people contributed extravagantly to Hillary's contribution reuslting in an increase in amount raised.
+
