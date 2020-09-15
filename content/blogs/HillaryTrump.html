@@ -1,0 +1,93 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:42:51-05:00"
+description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
+draft: false
+image: pic_election.jpg
+keywords: ""
+slug: HillaryTrump
+title: Hillary vs. Trump
+---
+
+
+
+<div id="california-contributors-r-code" class="section level2">
+<h2>2016 California Contributors (R Code)</h2>
+<p>This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below:</p>
+<p>We started by importing the California contributors dataset, the zip code data base and merged both datasets.</p>
+<pre class="r"><code># Loading dataframes
+CA_contributors_2016 &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;CA_contributors_2016.csv&quot;))
+zip_code &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
+
+# Changing the column zip of our zip_code dataframe to a numeric value
+zip_code &lt;- zip_code %&gt;% 
+  mutate(zip = as.numeric(zip))
+
+# Merging dataframes
+CA_contributors_2016 &lt;- CA_contributors_2016 %&gt;% 
+  inner_join(zip_code, by =  &quot;zip&quot;)</code></pre>
+<p>Next, we cleaned our dataframe and calculated the variables that were used in our analysis.</p>
+<pre class="r"><code>CA_contributors_2016_cleaned &lt;- CA_contributors_2016 %&gt;%
+  group_by(cand_nm,primary_city) %&gt;% 
+  summarise(total_amt = sum(contb_receipt_amt)) %&gt;% 
+  select(candidate = cand_nm, city = primary_city, money_raised = total_amt)</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;cand_nm&#39; (override with `.groups` argument)</code></pre>
+<p>We then plotted Trump and Hillary’s top 10 contribution cities graphs separately using the following R code.</p>
+<pre class="r"><code>library(scales)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;scales&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:vroom&#39;:
+## 
+##     col_factor</code></pre>
+<pre><code>## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     rescale</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard</code></pre>
+<pre><code>## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor</code></pre>
+<pre class="r"><code># Plot Hillary&#39;s top 10 contribution cities
+hillary &lt;- CA_contributors_2016_cleaned %&gt;%
+  filter(candidate == &quot;Clinton, Hillary Rodham&quot;) %&gt;%
+  top_n(10, wt = money_raised) %&gt;% 
+  ggplot(aes(x = money_raised, y = reorder(city, money_raised))) + geom_col(fill = &quot;dodgerblue3&quot;) +   
+  facet_grid(.~candidate) +
+  labs(title = NULL, x = NULL, y = NULL) +
+  scale_x_continuous(labels = scales::dollar_format()) + 
+  theme_update(plot.title = element_text(hjust = 0.5)) + #center the title
+  theme(strip.background = element_rect(fill = &quot;grey&quot;), 
+        stip.text = element_text(size = 8, color = &quot;black&quot;),
+  ) + 
+  theme_bw()
+
+# Plot Trump&#39;s top 10 contribution cities
+trump &lt;- CA_contributors_2016_cleaned %&gt;%
+  filter(candidate == &quot;Trump, Donald J.&quot;) %&gt;%
+  top_n(10, wt = money_raised) %&gt;% 
+  ggplot(aes(x = money_raised, y = reorder(city, money_raised))) + geom_col(fill = &quot;brown3&quot;) +   
+  facet_grid(.~candidate) +
+  labs(title = NULL, x = NULL, y = NULL) +
+  scale_x_continuous(labels = scales::dollar_format()) + 
+  theme_update(plot.title = element_text(hjust = 0.5)) + #center the title
+  theme(strip.background = element_rect(fill = &quot;grey&quot;), 
+        stip.text = element_text(size = 8, color = &quot;black&quot;),
+  ) + 
+  theme_bw()
+
+library(patchwork)
+
+# Combine them together and add a main title/x axis
+hillary_trump_top10 &lt;- hillary + trump +
+  plot_annotation(title = &quot;Where did candidates raise most money?&quot;, caption = &quot;Amount Raised&quot;) 
+  theme_update(plot.title = element_text(size = 10, hjust = 0.1, face = &quot;bold&quot;),
+               aspect.ratio = 9/4,
+               plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = &quot;bold&quot;))</code></pre>
+</div>
+<div id="california-contributors-plot" class="section level2">
+<h2>2016 California Contributors (Plot)</h2>
+<p><img src="/blogs/HillaryTrump_files/figure-html/hillary_trump_top10%20-1.png" width="672" /></p>
+</div>
