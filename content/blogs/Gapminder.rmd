@@ -11,10 +11,6 @@ slug: gapminder
 title: Correlation of HIV prevalence and life expectancy
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ## How does HIV prevalence vary by life expectancy
 
 *This was a project that we created during our course in Applied Statistics to understand if there is any relationship between HIV prevalence and life expectancy in the world.*
@@ -37,6 +33,7 @@ knitr::opts_chunk$set(
 
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(mosaic)
 library(ggthemes)
@@ -47,6 +44,8 @@ library(skimr)
 library(janitor)
 library(vroom)
 library(tidyquant)
+library(wbstats)
+
 ```
 
 We first load the data for HIV prevalence and life expectancy from the gapminder dataset, followed by the World Bank data to get information on countries, indicators, regions etc.
@@ -61,10 +60,7 @@ life_expectancy <- read_csv(here::here("data","life_expectancy_years.csv"))
 # get World bank data using wbstats
 indicators <- c("SP.DYN.TFRT.IN","SE.PRM.NENR", "SH.DYN.MORT", "NY.GDP.PCAP.KD")
 
-
-library(wbstats)
-
-worldbank_data <- wb_data(country="countries_only", #countries only- no aggregates like Latin America, Europe, etc.
+worldbank_data <- wb_data(country="countries_only", #countries only - no aggregates like Latin America, Europe, etc.
                           indicator = indicators, 
                           start_date = 1960, 
                           end_date = 2016)
@@ -75,6 +71,5 @@ countries <-  wbstats::wb_cachelist$countries
 
 ```
 
-You have to join the 3 dataframes (life_expectancy, worldbank_data, and HIV) into one. You may need to tidy your data first and then perform [join operations](http://r4ds.had.co.nz/relational-data.html). Think about what type makes the most sense **and explain why you chose it**.
 
 1. What is the relationship between HIV prevalence and life expectancy? Generate a scatterplot with a smoothing line to report your results. You may find faceting useful
