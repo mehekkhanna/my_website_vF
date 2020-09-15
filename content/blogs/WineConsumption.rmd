@@ -12,7 +12,7 @@ title: Top 25 consumers of wine
 ---
 
 ---
-title: "WineConsumption.md"
+title: "WineConsumption.rmd"
 output: html_document
 ---
 
