@@ -41,13 +41,13 @@ knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display c
     </item>
     
     <item>
-      <title>Top 25 consumers of wine</title>
+      <title>Top 25 consumers of wine in the world</title>
       <link>/blogs/wineconsumption/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/wineconsumption/</guid>
       <description>Countries that love to get drunk on wine! This was a project that we created during our course in Applied Statistics to visualise the top 25 wine consuming countries in the world.
-knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.width=9, fig.height=6.75, fig.align = &amp;quot;center&amp;quot; ) We start off by loading our data frame and then checking which values were missing.</description>
+knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.width=12, fig.height=6.75, fig.align = &amp;quot;center&amp;quot; ) We start off by loading our data frame and then checking which values were missing.</description>
     </item>
     
     <item>

@@ -8,7 +8,7 @@ draft: false
 image: pic_wine.jpg
 keywords: ""
 slug: WineConsumption
-title: Top 25 consumers of wine
+title: Top 25 consumers of wine in the world
 ---
 
 ## Countries that love to get drunk on wine!
@@ -25,7 +25,7 @@ options(digits = 3)
 
 # default figure size
 knitr::opts_chunk$set(
-  fig.width=9, 
+  fig.width=12, 
   fig.height=6.75,
   fig.align = "center"
 )
