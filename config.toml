@@ -100,13 +100,13 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Top 25 consumers of wine"
       subtitle = "Top 25 wine consuming countries in the world"
-      image = "pic02.jpg"
+      image = "blogs/pic_wine.jpg"
       url = "blogs/WineConsumption"
 
     [[params.tiles.showcase]]
       title = "Gapminder"
       subtitle = "Update"
-      image = "pic03.jpg"
+      image = "blogs/pic_world.jpg"
       url = "blogs/gapminder"
 
 #    [[params.tiles.showcase]]
