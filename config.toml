@@ -101,7 +101,7 @@ disqusShortname = ""
       title = "Top 25 consumers of wine"
       subtitle = "Top 25 wine consuming countries in the world"
       image = "pic02.jpg"
-      url = "blogs/Wine_Consumption"
+      url = "blogs/WineConsumption"
 
     [[params.tiles.showcase]]
       title = "Gapminder"
