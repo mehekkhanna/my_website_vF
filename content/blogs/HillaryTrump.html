@@ -25,8 +25,8 @@ options(digits = 3)
 
 # default figure size
 knitr::opts_chunk$set(
-  fig.width=6.75, 
-  fig.height=6.75,
+  fig.width=9, 
+  fig.height=9,
   fig.align = &quot;center&quot;
 )</code></pre>
 <p>The graphs illustrate the top 10 cities (in California) from where Hillary and Trump received their contributions. To start off, we imported the California contributors dataset, the zip code data base and merged both datasets to get a new dataframe.</p>
@@ -88,10 +88,10 @@ hillary_trump_top10 &lt;- hillary + trump +
                aspect.ratio = 9/4,
                plot.caption = element_text(hjust = 0.55, vjust = 0.5, face = &quot;bold&quot;))</code></pre>
 <p>Finally, with the help of ggplot() we visualised the top 10 cities (in terms of contribution amount) for Hillary Clinton and Donald Trump.</p>
-<p><img src="/blogs/HillaryTrump_files/figure-html/hillary_trump_top10%20-1.png" width="648" style="display: block; margin: auto;" /></p>
+<p><img src="/blogs/HillaryTrump_files/figure-html/hillary_trump_top10%20-1.png" width="864" style="display: block; margin: auto;" /></p>
 </div>
 <div id="graphical-analysis" class="section level2">
 <h2>Graphical analysis</h2>
 <p>As can be seen in the graph above, there is variation between where the candidates got the highest contributions from. For e.g., while Hillary Clinton witnessed the highest contributions from San Fransisco, the same isn’t true for Donald Trump. (Perhaps, people in San Fransisco don’t really love Trump’s policies and ideologies - well thank god for that!)</p>
-<p>What’s interesting to note is that despite not winning the presidential elections, Hillary Clinton actually received more contributions from California than Trump did. This could mean that the people in California (at least in these top 10 cities) favour Hillary Clinton more than Trump, or it could also mean that a few people contributed extravagantly to Hillary’s contribution reuslting in an increase in amount raised.</p>
+<p>What’s interesting to note is that despite not winning the presidential elections, Hillary Clinton actually received more contributions from California than Trump did. This could mean that the people in California (at least in these top 10 cities) favour Hillary Clinton more than Trump, or it could also mean that a few people contributed extravagantly to Hillary’s contribution resulting in an increase in amount raised.</p>
 </div>
