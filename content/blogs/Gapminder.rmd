@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## How does HIV prevalence vary by life expectancy
 
-*This was a project that we created during our course in Applied Statistics to visualise the top 25 wine consuming countries in the world.* 
+*This was a project that we created during our course in Applied Statistics to understand if there is any relationship between HIV prevalence and life expectancy in the world.*
 
 ```{r, setup}
 knitr::opts_chunk$set(
@@ -49,19 +49,6 @@ library(vroom)
 library(tidyquant)
 ```
 
-# Gapminder revisited
-
-Recall the `gapminder` data frame from the gapminder package. That data frame contains just six columns from the larger [data in Gapminder World](https://www.gapminder.org/data/). In this part, you will join a few dataframes with more data than the 'gapminder' package. Specifically, you will look at data on 
-
-
-- Life expectancy at birth (life_expectancy_years.csv)
-- GDP per capita in constant 2010 US$ (https://data.worldbank.org/indicator/NY.GDP.PCAP.KD)
-- Female fertility: The number of babies per woman (https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)
-- Primary school enrollment as % of children attending primary school (https://data.worldbank.org/indicator/SE.PRM.NENR)
-- Mortality rate, for under 5, per 1000 live births (https://data.worldbank.org/indicator/SH.DYN.MORT)
-- HIV prevalence (adults_with_hiv_percent_age_15_49.csv): The estimated number of people living with HIV per 100 population of age group 15-49.
-
-You must use the `wbstats` package to download data from the World Bank. The relevant World Bank indicators are `SP.DYN.TFRT.IN`, `SE.PRM.NENR`, `NY.GDP.PCAP.KD`, and `SH.DYN.MORT`
 
 ```{r, get_data, cache=TRUE}
 
