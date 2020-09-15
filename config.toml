@@ -105,7 +105,7 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "Gapminder"
-      subtitle = "Update"
+      subtitle = "Relationship between HIV prevalence and life expectancy"
       image = "blogs/pic_world.jpg"
       url = "blogs/gapminder"
 
