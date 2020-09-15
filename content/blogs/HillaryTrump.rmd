@@ -13,9 +13,29 @@ title: Hillary vs. Trump
 
 ## 2016 California Contributors (R Code)
 
-This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump recieved their contributions from. The R code is as shown below: 
+This was a project that we created during our course to understand the difference in contribution received (in $) b/w Hillary and Trump in 2016. The graphs illustrate the top 10 cities (in California) from where Hillary and Trump received their contributions from. The R code is as shown below: 
 
 We started by importing the California contributors dataset, the zip code data base and merged both datasets.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, setup}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
 
 ```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
