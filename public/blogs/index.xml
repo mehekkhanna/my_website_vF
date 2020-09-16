@@ -61,14 +61,13 @@ knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display c
     </item>
     
     <item>
-      <title>Understanding the variation in IMDB ratings for Steven Speilberg and Tim Burton</title>
+      <title>Variation in IMDB ratings (Steven Speilberg vs. Tim Burton)</title>
       <link>/blogs/directors_imdb/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
       <guid>/blogs/directors_imdb/</guid>
       <description>How do the average IMDB ratings of Steven Spielberg and Tim Burton vary? We created this analysis to understand if there was any significant variation in the mean ratings of two of the greatest directors of all time, Steven Spielberg and Tim Burton
 Lets look at the average ratings for Steven Spielberg and Tim Burton and analyse whether they are significantly different from each other.
-Hide
 knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.</description>
     </item>
     
