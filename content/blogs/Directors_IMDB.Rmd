@@ -5,7 +5,7 @@ categories:
 date: "2017-10-31T22:42:51-05:00"
 description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
 draft: false
-image: Directors_IMDB.jpg
+image: pic_movies.jpg
 keywords: ""
 slug: Directors_IMDB
 title: Understanding the variation in IMDB ratings for Steven Speilberg and Tim Burton
