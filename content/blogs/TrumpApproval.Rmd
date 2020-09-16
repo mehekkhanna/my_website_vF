@@ -8,12 +8,12 @@ draft: false
 image: pic_donald.jpg
 keywords: ""
 slug: TrumpApproval
-title: Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020
+title: Estimating Donald Trump's (weekly) net approval rate
 ---
 
 ## Do people really approve of Donald Trump?
 
-*This was a project that we created during our course in Applied Statistics to understand Donald Trump's approval margins from 2017 - 2020.*
+*This was a project that we created during our course in Applied Statistics to understand Donald Trump's approval margins among voters from 2017 - 2020.*
 
 ```{r, setup}
 knitr::opts_chunk$set(
