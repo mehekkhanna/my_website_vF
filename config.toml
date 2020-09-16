@@ -92,25 +92,25 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Hillary vs. Trump"
+      title = "The Presidential Race"
       subtitle = "Top 10 cities in California with the highest amount (in $) of voter contribution (Hillary vs. Trump)"
       image = "blogs/pic_election.jpg"
       url = "blogs/HillaryTrump"
 
     [[params.tiles.showcase]]
-      title = "Wine Consumption around the globe"
+      title = "Who needs a drink?"
       subtitle = "Top 25 wine consuming countries in the world"
       image = "blogs/pic_wine.jpg"
       url = "blogs/WineConsumption"
 
     [[params.tiles.showcase]]
-      title = "Donal Trump approval rate"
+      title = "Do you approve of Donal Trump approval?"
       subtitle = "Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020"
       image = "blogs/pic_donald.jpg"
       url = "blogs/TrumpApproval"
 
     [[params.tiles.showcase]]
-      title = "Clash of the Directors"
+      title = "Clash of the Directors!"
       subtitle = "Understanding the variation in IMDB ratings for Steven Speilberg and Tim Burton"
       image = "Directors_IMDB.jpg"
       url = "blogs/Directors_IMDB"
