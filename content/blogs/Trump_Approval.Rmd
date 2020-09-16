@@ -110,4 +110,3 @@ trump_plot
 What's interesting to note is that for all weeks b/w 2017-20, Trump's approval rate was < 0 (except in the first 2 weeks of 2017). This is an indication of how unhappy / dissatified voters are with Trump's leadership, policies and ideologies. 
 
 Moreover, when we look at the interval from week 15 (6-12 April 2020) to week 34 (17-23 August 2020) we can see that while the average net approval is decreasing and the 95% confidence interval is growing. This could be a result of Trumps strongly debated handling of the pandemic and his controversial take on the black lives matter movement, making him loose  followers and support. The increase in the confidence interval could also be a result of the uncertain times we live in right now, leading people to be more undecided and unsure about their vote.
-
