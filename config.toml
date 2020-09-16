@@ -98,16 +98,16 @@ disqusShortname = ""
       url = "blogs/HillaryTrump"
 
     [[params.tiles.showcase]]
-      title = "Top 25 consumers of wine"
+      title = "Wine Consumption around the globe"
       subtitle = "Top 25 wine consuming countries in the world"
       image = "blogs/pic_wine.jpg"
       url = "blogs/WineConsumption"
 
     [[params.tiles.showcase]]
-      title = "Gapminder"
-      subtitle = "Relationship between HIV prevalence and life expectancy"
-      image = "blogs/pic_hiv.jpg"
-      url = "blogs/gapminder"
+      title = "Donal Trump approval"
+      subtitle = "Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020"
+      image = "blogs/pic_donald.jpg"
+      url = "blogs/approval"
 
 #    [[params.tiles.showcase]]
 #      title = "Ipsum"
