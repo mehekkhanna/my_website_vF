@@ -107,7 +107,7 @@ disqusShortname = ""
       title = "Donal Trump approval rate"
       subtitle = "Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020"
       image = "blogs/pic_donald.jpg"
-      url = "blogs/approval"
+      url = "blogs/TrumpApproval"
 
 #    [[params.tiles.showcase]]
 #      title = "Ipsum"

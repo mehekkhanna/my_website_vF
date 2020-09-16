@@ -1,0 +1,112 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:42:51-05:00"
+description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
+draft: false
+image: pic_donald.jpg
+keywords: ""
+slug: TrumpApproval
+title: Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020
+---
+
+## Do people really approve of Donald Trump?
+
+*This was a project that we created during our course in Applied Statistics to understand Donald Trump's approval margins from 2017 - 2020.*
+
+```{r, setup}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=11, 
+  fig.height=7,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(wbstats)
+
+```
+
+To start with out analysis we load the approval pollist data available on fivethirtyeight.com This is followed by the standard process of data cleaning to fix dates from characters to a more suitable format. 
+
+```{r, cache=TRUE}
+# Import approval polls data
+approval_polllist <- read_csv(here::here('data', 'approval_polllist.csv'))
+
+# Use `lubridate` to fix dates, as they are given as characters.
+approval_polllist_cleaned <- approval_polllist %>% 
+  mutate(modeldate = mdy(modeldate), startdate = mdy(startdate), enddate = mdy(enddate), createddate = mdy(createddate), timestamp = parse_date_time(timestamp, orders = "hmsdmy"))
+
+glimpse(approval_polllist_cleaned)
+```
+
+We now create a plot to calculate the average net approval rate (approve - disapprove) for each week since he got into office since 2017. To analyse our dataset better, we also plot the 95% confidence interval for each of the points.
+
+``` {r ggplot, echo = FALSE}
+
+alpha <- 0.05
+
+# Cleaning our data and summarising the statistics needed to calulculate confidence intervals
+
+approval_pollist_summary <- approval_polllist_cleaned %>% 
+  filter(subgroup=="Voters") %>% 
+  mutate(week = week(enddate), year = year(enddate)) %>% 
+  mutate(avg_net_approval = adjusted_approve - adjusted_disapprove, year = year(enddate)) %>% 
+  group_by(week, year) %>% 
+  summarise(year = year, week = week,
+            mean_approval = mean(avg_net_approval),
+            lower = mean(avg_net_approval) - qt(1- alpha/2, (n() - 1))*sd(avg_net_approval)/sqrt(n()),
+            upper = mean(avg_net_approval) + qt(1- alpha/2, (n() - 1))*sd(avg_net_approval)/sqrt(n())
+            ) %>% 
+ unique(by = c("week", "year")) %>% 
+  arrange(year, week)
+
+# Visualising the findings using ggplot 
+
+trump_plot <- ggplot(approval_pollist_summary, aes(x=week,y=mean_approval, color = as.factor(year))) + 
+  geom_line() + 
+  facet_wrap(~year) + 
+  geom_point() + 
+  geom_hline(yintercept=0, color = "gold") +
+  geom_ribbon(aes(ymin=lower, ymax=upper), linetype=1, alpha=0.1) +
+  labs(title = "Estimating Net Approval (approve-disapprove) for Donal Trump", subtitle = "Weekly average polls", y = "Average Net Approval (%)", x = "Week of the year") + 
+  theme_bw() +
+  theme(legend.position="none") +
+  scale_color_manual(values = c("#FF736C","#7DAE00","#00BBBD","#C47EFF")) + 
+  scale_y_continuous(labels = scales::number_format(accuracy = 0.1, decimal.mark = '.'), 
+              breaks = c(7.5, 5, 2.5,0.0,-2.5, -5.0, -7.5, -10.0, -12.5, -15.0, -17.5, -20.0)) + 
+  scale_x_continuous(breaks = c(0, 13, 26, 39, 52))
+
+ggsave("trump_plot.png", width = 9.5, height = 4, dpi = 120)
+
+```
+
+```{r trump_approval_graph , echo=FALSE}
+trump_plot
+```
+
+## Graphical analysis
+
+What's interesting to note is that for all weeks b/w 2017-20, Trump's approval rate was < 0 (except in the first 2 weeks of 2017). This is an indication of how unhappy / dissatified voters are with Trump's leadership, policies and ideologies. 
+
+Moreover, when we look at the interval from week 15 (6-12 April 2020) to week 34 (17-23 August 2020) we can see that while the average net approval is decreasing and the 95% confidence interval is growing. This could be a result of Trumps strongly debated handling of the pandemic and his controversial take on the black lives matter movement, making him loose  followers and support. The increase in the confidence interval could also be a result of the uncertain times we live in right now, leading people to be more undecided and unsure about their vote.

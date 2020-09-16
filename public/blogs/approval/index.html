@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="A 23-year old Indian who is sick of self-isolation and looking to transiton from zoomie to roomie">
+	<meta name="author" content="Mehek Khanna">
+	<meta name="generator" content="Hugo 0.74.3" />
+	<title>Estimating Donald Trump&#39;s (weekly) net approval rate from 2017 - 2020 &middot; Portfolio Website for Mehek Khanna</title>
+	<!-- Stylesheets -->
+	
+	<link rel="stylesheet" href="/css/main.css"/>
+	
+	
+
+	
+
+	<!-- Custom Fonts -->
+	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5shiv.js"></script>
+	<script src="js/ie/html5shiv.jsrespond.min.js"></script>
+	<![endif]-->
+</head>
+
+    <body>
+
+    <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+    <header id="header" class="alt">
+        <a href="/" class="logo"><strong>Mehek Khanna</strong> <span></span></a>
+        <nav>
+            <a href="#menu">Menu</a>
+        </nav>
+    </header>
+
+<!-- Menu -->
+    <nav id="menu">
+        <ul class="links">
+            
+                <li><a href="/">Home</a></li>
+            
+                <li><a href="/blogs">Blogs</a></li>
+            
+                <li><a href="/"></a></li>
+            
+                <li><a href="/"></a></li>
+            
+
+        </ul>
+        <ul class="actions vertical">
+            
+                <li><a href="/blogs" class="button special fit">Get Started</a></li>
+            
+            
+                <li><a href="/" class="button fit">Log In</a></li>
+            
+        </ul>
+    </nav>
+
+        <!-- Main -->
+            <div id="main" class="alt">
+
+                
+                    <section id="one">
+                        <div class="inner">
+                            <header class="major">
+                                <h1>Estimating Donald Trump&#39;s (weekly) net approval rate from 2017 - 2020</h1>
+                            </header>
+                            
+                                <span class="image main"><img src="/img/blogs/pic_donald.jpg" alt="" /></span>
+                            
+                            
+
+
+<div id="do-people-really-approve-of-donald-trump" class="section level2">
+<h2>Do people really approve of Donald Trump?</h2>
+<p><em>This was a project that we created during our course in Applied Statistics to understand Donald Trump’s approval margins from 2017 - 2020.</em></p>
+<pre class="r"><code>knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size=&quot;small&quot;)   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=11, 
+  fig.height=7,
+  fig.align = &quot;center&quot;
+)</code></pre>
+<p>To start with out analysis we load the approval pollist data available on fivethirtyeight.com This is followed by the standard process of data cleaning to fix dates from characters to a more suitable format.</p>
+<pre class="r"><code># Import approval polls data
+approval_polllist &lt;- read_csv(here::here(&#39;data&#39;, &#39;approval_polllist.csv&#39;))
+
+# Use `lubridate` to fix dates, as they are given as characters.
+approval_polllist_cleaned &lt;- approval_polllist %&gt;% 
+  mutate(modeldate = mdy(modeldate), startdate = mdy(startdate), enddate = mdy(enddate), createddate = mdy(createddate), timestamp = parse_date_time(timestamp, orders = &quot;hmsdmy&quot;))
+
+glimpse(approval_polllist_cleaned)</code></pre>
+<pre><code>## Rows: 14,533
+## Columns: 22
+## $ president           &lt;chr&gt; &quot;Donald Trump&quot;, &quot;Donald Trump&quot;, &quot;Donald Trump&quot;, &quot;…
+## $ subgroup            &lt;chr&gt; &quot;All polls&quot;, &quot;All polls&quot;, &quot;All polls&quot;, &quot;All polls…
+## $ modeldate           &lt;date&gt; 2020-08-29, 2020-08-29, 2020-08-29, 2020-08-29, …
+## $ startdate           &lt;date&gt; 2017-01-20, 2017-01-20, 2017-01-20, 2017-01-21, …
+## $ enddate             &lt;date&gt; 2017-01-22, 2017-01-22, 2017-01-24, 2017-01-23, …
+## $ pollster            &lt;chr&gt; &quot;Gallup&quot;, &quot;Morning Consult&quot;, &quot;Ipsos&quot;, &quot;Gallup&quot;, &quot;…
+## $ grade               &lt;chr&gt; &quot;B&quot;, &quot;B/C&quot;, &quot;B-&quot;, &quot;B&quot;, &quot;B&quot;, &quot;C+&quot;, &quot;B-&quot;, &quot;B+&quot;, &quot;B&quot;…
+## $ samplesize          &lt;dbl&gt; 1500, 1992, 1632, 1500, 1500, 1500, 1651, 1190, 2…
+## $ population          &lt;chr&gt; &quot;a&quot;, &quot;rv&quot;, &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;lv&quot;, &quot;a&quot;, &quot;rv&quot;, &quot;a&quot;, &quot;…
+## $ weight              &lt;dbl&gt; 0.262, 0.680, 0.153, 0.243, 0.227, 0.200, 0.142, …
+## $ influence           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+## $ approve             &lt;dbl&gt; 45.0, 46.0, 42.1, 45.0, 46.0, 57.0, 42.3, 36.0, 4…
+## $ disapprove          &lt;dbl&gt; 45.0, 37.0, 45.2, 46.0, 45.0, 43.0, 45.8, 44.0, 3…
+## $ adjusted_approve    &lt;dbl&gt; 45.8, 45.3, 43.2, 45.8, 46.8, 51.6, 43.4, 37.7, 4…
+## $ adjusted_disapprove &lt;dbl&gt; 43.6, 37.8, 43.9, 44.6, 43.6, 44.4, 44.5, 42.8, 3…
+## $ multiversions       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…
+## $ tracking            &lt;lgl&gt; TRUE, NA, TRUE, TRUE, TRUE, TRUE, TRUE, NA, NA, T…
+## $ url                 &lt;chr&gt; &quot;http://www.gallup.com/poll/201617/gallup-daily-t…
+## $ poll_id             &lt;dbl&gt; 49253, 49249, 49426, 49262, 49236, 49266, 49425, …
+## $ question_id         &lt;dbl&gt; 77265, 77261, 77599, 77274, 77248, 77278, 77598, …
+## $ createddate         &lt;date&gt; 2017-01-23, 2017-01-23, 2017-03-01, 2017-01-24, …
+## $ timestamp           &lt;dttm&gt; 2020-08-29 13:38:37, 2020-08-29 13:38:37, 2020-0…</code></pre>
+<p>We now create a plot to calculate the average net approval rate (approve - disapprove) for each week since he got into office since 2017. To analyse our dataset better, we also plot the 95% confidence interval for each of the points.</p>
+<p><img src="/blogs/Trump_Approval_files/figure-html/trump_approval_graph%20-1.png" width="1056" style="display: block; margin: auto;" /></p>
+</div>
+<div id="graphical-analysis" class="section level2">
+<h2>Graphical analysis</h2>
+<p>What’s interesting to note is that for all weeks b/w 2017-20, Trump’s approval rate was &lt; 0 (except in the first 2 weeks of 2017). This is an indication of how unhappy / dissatified voters are with Trump’s leadership, policies and ideologies.</p>
+<p>Moreover, when we look at the interval from week 15 (6-12 April 2020) to week 34 (17-23 August 2020) we can see that while the average net approval is decreasing and the 95% confidence interval is growing. This could be a result of Trumps strongly debated handling of the pandemic and his controversial take on the black lives matter movement, making him loose followers and support. The increase in the confidence interval could also be a result of the uncertain times we live in right now, leading people to be more undecided and unsure about their vote.</p>
+</div>
+
+                        </div>
+                    </section>
+            <!-- Disqus Inject -->
+                
+            </div>
+            
+        <!-- Footer -->
+            
+                <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                
+                    <li><a href="https://www.twitter.com" class="icon alt fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
+                
+                    <li><a href="https://www.facebook.com/LondonBusinessSchool" class="icon alt fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
+                
+                    <li><a href="https://www.instagram.com" class="icon alt fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
+                
+                    <li><a href="https://github.com/mehekkhanna" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
+                
+                    <li><a href="https://www.linkedin.com/in/mehek-khanna/" class="icon alt fa-linkedin" target="_blank"><span class="label">LinkedIn</span></a></li>
+                
+            </ul>
+            <ul class="copyright">
+                <li>&copy; Company Name</li>
+                
+                <li> <a href=""></a></li>
+                
+            </ul>
+        </div>
+    </footer>
+
+            
+        </div>
+
+    <!-- Scripts -->
+        <!-- Scripts -->
+    <!-- jQuery -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.scrolly.min.js"></script>
+    <script src="/js/jquery.scrollex.min.js"></script>
+    <script src="/js/skel.min.js"></script>
+    <script src="/js/util.js"></script>
+
+    
+
+    <!-- Main JS -->
+    <script src="/js/main.js"></script>
+
+    
+
+    
+
+    </body>
+</html>

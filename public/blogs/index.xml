@@ -21,13 +21,23 @@
     </item>
     
     <item>
-      <title>Aliquam</title>
-      <link>/blogs/aliquam/</link>
+      <title>Estimating Donald Trump&#39;s (weekly) net approval rate from 2017 - 2020</title>
+      <link>/blogs/approval/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
       
-      <guid>/blogs/aliquam/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</description>
+      <guid>/blogs/approval/</guid>
+      <description>Do people really approve of Donald Trump? This was a project that we created during our course in Applied Statistics to understand Donald Trump’s approval margins from 2017 - 2020.
+knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.width=11, fig.height=7, fig.align = &amp;quot;center&amp;quot; ) To start with out analysis we load the approval pollist data available on fivethirtyeight.</description>
+    </item>
+    
+    <item>
+      <title>Estimating Donald Trump&#39;s (weekly) net approval rate from 2017 - 2020</title>
+      <link>/blogs/trumpapproval/</link>
+      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
+      
+      <guid>/blogs/trumpapproval/</guid>
+      <description>Do people really approve of Donald Trump? This was a project that we created during our course in Applied Statistics to understand Donald Trump’s approval margins from 2017 - 2020.
+knitr::opts_chunk$set( message = FALSE, warning = FALSE, tidy=FALSE, # display code as typed size=&amp;quot;small&amp;quot;) # slightly smaller font for code options(digits = 3) # default figure size knitr::opts_chunk$set( fig.width=11, fig.height=7, fig.align = &amp;quot;center&amp;quot; ) To start with out analysis we load the approval pollist data available on fivethirtyeight.</description>
     </item>
     
     <item>
