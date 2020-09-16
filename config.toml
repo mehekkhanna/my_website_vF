@@ -112,7 +112,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Clash of the Directors!"
       subtitle = "Variation in IMDB ratings (Steven Speilberg vs. Tim Burton)"
-      image = "pic_movies.jpg"
+      image = "blogs/pic_movies.jpg"
       url = "blogs/Directors_IMDB"
 
 #    [[params.tiles.showcase]]
