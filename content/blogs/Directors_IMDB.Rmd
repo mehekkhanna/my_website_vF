@@ -132,7 +132,9 @@ imdb_spielberg_and_burton <-
   theme(legend.position = "none") +
   ggtitle("Do Spielberg and Burton have the same IMDB ratings") +
   theme(plot.title = element_text(face = "bold")) +
-  labs(subtitle = "95% confidence intervals overlap", x = "Mean IMDB ratings", y = "") +
+  labs(subtitle = "95% confidence intervals overlap",
+       x = "Mean IMDB ratings",
+       y = "") +
   theme(aspect.ratio=3/5) 
 
 imdb_spielberg_and_burton
