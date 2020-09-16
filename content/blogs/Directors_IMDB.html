@@ -1,0 +1,126 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:42:51-05:00"
+description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.
+draft: false
+image: pic_movies.jpg
+keywords: ""
+slug: Directors_IMDB
+title: Understanding the variation in IMDB ratings for Steven Speilberg and Tim Burton
+---
+
+
+
+<div id="how-do-the-average-imdb-ratings-of-steven-spielberg-and-tim-burton-vary" class="section level2">
+<h2>How do the average IMDB ratings of Steven Spielberg and Tim Burton vary?</h2>
+<p><em>We created this analysis to understand if there was any significant variation in the mean ratings of two of the greatest directors of all time, Steven Spielberg and Tim Burton</em></p>
+<p>Lets look at the average ratings for Steven Spielberg and Tim Burton and analyse whether they are significantly different from each other.</p>
+<p>Hide</p>
+<pre class="r"><code>knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size=&quot;small&quot;)   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=11, 
+  fig.height=7,
+  fig.align = &quot;center&quot;
+)</code></pre>
+<p>We start off by loading our data frame movies.csv</p>
+<pre class="r"><code># Data loading
+movies &lt;- read_csv(here::here(&quot;data&quot;, &quot;movies.csv&quot;))
+glimpse(movies) </code></pre>
+<pre><code>## Rows: 2,961
+## Columns: 11
+## $ title               &lt;chr&gt; &quot;Avatar&quot;, &quot;Titanic&quot;, &quot;Jurassic World&quot;, &quot;The Aveng…
+## $ genre               &lt;chr&gt; &quot;Action&quot;, &quot;Drama&quot;, &quot;Action&quot;, &quot;Action&quot;, &quot;Action&quot;, …
+## $ director            &lt;chr&gt; &quot;James Cameron&quot;, &quot;James Cameron&quot;, &quot;Colin Trevorro…
+## $ year                &lt;dbl&gt; 2009, 1997, 2015, 2012, 2008, 1999, 1977, 2015, 2…
+## $ duration            &lt;dbl&gt; 178, 194, 124, 173, 152, 136, 125, 141, 164, 93, …
+## $ gross               &lt;dbl&gt; 7.61e+08, 6.59e+08, 6.52e+08, 6.23e+08, 5.33e+08,…
+## $ budget              &lt;dbl&gt; 2.37e+08, 2.00e+08, 1.50e+08, 2.20e+08, 1.85e+08,…
+## $ cast_facebook_likes &lt;dbl&gt; 4834, 45223, 8458, 87697, 57802, 37723, 13485, 92…
+## $ votes               &lt;dbl&gt; 886204, 793059, 418214, 995415, 1676169, 534658, …
+## $ reviews             &lt;dbl&gt; 3777, 2843, 1934, 2425, 5312, 3917, 1752, 1752, 3…
+## $ rating              &lt;dbl&gt; 7.9, 7.7, 7.0, 8.1, 9.0, 6.5, 8.7, 7.5, 8.5, 7.2,…</code></pre>
+<p>In order to carry out our statistical analysis, we need to lay out our hypothesis. The hypotheses are as stated below:</p>
+<ul>
+<li><p>Null hypothesis (H0) = The mean IMDB ratings for Steven Spielberg and Tim Burton are equal, i.e. the difference between the two means = 0</p></li>
+<li><p>Alternate hypothesis (H1) = The mean IMDB ratings for Steven Spielberg and Tim Burton are not equal, i.e. they are significantly different</p></li>
+</ul>
+<p>Before we proceed with the analysis, we clean the data and carry our some initial analysis.</p>
+<pre class="r"><code># Cleaning our dataset
+selected_directors_statistic &lt;- movies %&gt;% 
+  filter(director == &quot;Steven Spielberg&quot; | director == &quot;Tim Burton&quot;) %&gt;% # filtering our dataset
+  group_by(director) %&gt;% # grouping by directors
+  summarise(
+    mean = mean(rating),
+    sd = sd(rating),
+    count = n(),
+    se = sd / sqrt(count),
+    t_critical = qt(0.975, count - 1),
+    lower_ci = mean - t_critical * se,
+    upper_ci = mean + t_critical * se,
+    rating = rating) # summarising our statistics to find out the confidence intervals</code></pre>
+<p>Now, we need to test our null and alternate hypothesis, for which we carry our the t-test.</p>
+<pre class="r"><code># Creating the t-statistic to carry out statistical testing
+t_statistic &lt;- t.test(rating ~ director, data = selected_directors_statistic)
+t_statistic</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  rating by director
+## t = 3, df = 31, p-value = 0.01
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.16 1.13
+## sample estimates:
+## mean in group Steven Spielberg       mean in group Tim Burton 
+##                           7.57                           6.93</code></pre>
+<p>We can see that the mean IMDB ratings for Steven Spielberg is greater than that of Tim Burton. Additionally, the t-statistic &gt; 2 and p-value &lt; 0.05, which makes us reject our null hypothesis and accept the alternate hypothesis.</p>
+<p>Hence, we can say that there is a significant variation between the mean IMDB ratings of the 2 directors. To look at this visually and to check for any overlaps, we will now plot the graphs.</p>
+<pre class="r"><code># Selecting Spielberg and Burton
+selected_directors &lt;- movies %&gt;% 
+  filter(director == &quot;Steven Spielberg&quot; | director == &quot;Tim Burton&quot;) %&gt;% 
+  group_by(director) %&gt;% 
+  summarise(
+    mean = mean(rating),
+    sd = sd(rating),
+    count = n(),
+    se = sd / sqrt(count),
+    t_critical = qt(0.975, count - 1),
+    lower_ci = mean - t_critical * se,
+    upper_ci = mean + t_critical * se
+    ) 
+
+# Plotting the confidence intervals of both directors
+
+imdb_spielberg_and_burton &lt;- 
+  ggplot(selected_directors, aes(x = mean, y = reorder(director, mean))) +
+  geom_rect(xmin = 7.27, xmax = 7.33, ymin = 0, ymax = 10, fill = &quot;grey&quot;, aes(alpha = 0.5)) +
+  geom_point(size = 3, shape = 16) +
+  geom_text(aes(label = round(mean, 2)), size = 5, hjust = 0.4, vjust = -1) +
+  geom_errorbar(aes(xmin = lower_ci, xmax = upper_ci, colour = director, fill = director),
+                width = 0.2,
+                size = 1.5) +
+  scale_fill_manual(values = c(&quot;#FA8072&quot;, &quot;#48D1CC&quot;)) +
+  geom_text(aes(label = round(lower_ci, 2)), hjust = 4, vjust = - 1) +
+  geom_text(aes(label = round(upper_ci, 2)), hjust = - 4, vjust = - 1) +
+  theme_bw() +
+  theme(legend.position = &quot;none&quot;) +
+  ggtitle(&quot;Do Spielberg and Burton have the same IMDB ratings&quot;) +
+  theme(plot.title = element_text(face = &quot;bold&quot;)) +
+  labs(subtitle = &quot;95% confidence intervals overlap&quot;, x = &quot;Mean IMDB ratings&quot;, y = &quot;&quot;) +
+  theme(aspect.ratio=3/5) 
+
+imdb_spielberg_and_burton</code></pre>
+<p><img src="/blogs/Directors_IMDB_files/figure-html/unnamed-chunk-3-1.png" width="1056" style="display: block; margin: auto;" />
+## Graphical analysis</p>
+<p>What’s interesting to note is that for all weeks b/w 2017-20, Trump’s approval rate was &lt; 0 (except in the first 2 weeks of 2017). This is an indication of how unhappy / dissatified voters are with Trump’s leadership, policies and ideologies.</p>
+<p>Moreover, when we look at the interval from week 15 (6-12 April 2020) to week 34 (17-23 August 2020) we can see that while the average net approval is decreasing and the 95% confidence interval is growing. This could be a result of Trumps strongly debated handling of the pandemic and his controversial take on the black lives matter movement, making him loose followers and support. The increase in the confidence interval could also be a result of the uncertain times we live in right now, leading people to be more undecided and unsure about their vote.</p>
+</div>

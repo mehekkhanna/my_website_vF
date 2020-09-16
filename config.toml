@@ -104,7 +104,7 @@ disqusShortname = ""
       url = "blogs/WineConsumption"
 
     [[params.tiles.showcase]]
-      title = "Do you approve of Donal Trump approval?"
+      title = "Do you approve of Donal Trump?"
       subtitle = "Estimating Donald Trump's (weekly) net approval rate from 2017 - 2020"
       image = "blogs/pic_donald.jpg"
       url = "blogs/TrumpApproval"
