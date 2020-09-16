@@ -110,10 +110,10 @@ disqusShortname = ""
       url = "blogs/TrumpApproval"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
-      image = "pic04.jpg"
-      url = "blogs/ipsum"
+      title = "Clash of the Directors"
+      subtitle = "Understanding the variation in IMDB ratings for Steven Speilberg and Tim Burton"
+      image = "Directors_IMDB.jpg"
+      url = "blogs/Directors_IMDB"
 
 #    [[params.tiles.showcase]]
 #      title = "Consequat"
