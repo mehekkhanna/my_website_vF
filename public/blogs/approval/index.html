@@ -109,7 +109,7 @@ approval_polllist &lt;- read_csv(here::here(&#39;data&#39;, &#39;approval_pollli
 approval_polllist_cleaned &lt;- approval_polllist %&gt;% 
   mutate(modeldate = mdy(modeldate), startdate = mdy(startdate), enddate = mdy(enddate), createddate = mdy(createddate), timestamp = parse_date_time(timestamp, orders = &quot;hmsdmy&quot;))
 
-# Using the skim and glimpse functions to understand our data better
+# Using the glimpse functions to understand our data better
 glimpse(approval_polllist_cleaned)</code></pre>
 <pre><code>## Rows: 14,533
 ## Columns: 22
@@ -135,9 +135,10 @@ glimpse(approval_polllist_cleaned)</code></pre>
 ## $ question_id         &lt;dbl&gt; 77265, 77261, 77599, 77274, 77248, 77278, 77598, …
 ## $ createddate         &lt;date&gt; 2017-01-23, 2017-01-23, 2017-03-01, 2017-01-24, …
 ## $ timestamp           &lt;dttm&gt; 2020-08-29 13:38:37, 2020-08-29 13:38:37, 2020-0…</code></pre>
-<pre class="r"><code>skim(approval_polllist_cleaned)</code></pre>
+<pre class="r"><code># Using the skim and glimpse functions to understand our data better
+skim(approval_polllist_cleaned)</code></pre>
 <table>
-<caption><span id="tab:unnamed-chunk-1">Table 1: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
