@@ -59,6 +59,9 @@ zip_code <- zip_code %>%
 # Merging dataframes
 CA_contributors_2016 <- CA_contributors_2016 %>% 
   inner_join(zip_code, by =  "zip")
+
+# Glimpse of merged datafram
+glimpse(CA_contributors_2016)
 ```
 
 Next, we cleaned our dataframe and calculated the variables that were used in our analysis.
