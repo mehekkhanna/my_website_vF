@@ -67,7 +67,7 @@ skim(drinks)
 
 From the skim function, we can see that there were no missing values, the variables were either integers, characters or doubles.
 
-We now plot and take a look at the top 25 wine consuming countries in thr world.
+We now plot and take a look at the top 25 wine consuming countries in the world.
 
 ```{r wine_plot}
 
@@ -87,19 +87,21 @@ wine_countries_top_25 <- ggplot(wine_25, aes(x=wine_servings, y=reorder(country,
 
 ```
 
-```{r hillary_trump_top10 , echo=FALSE}
+```{r wine_consumption, echo=FALSE}
+
+# Plotting the graph
 wine_countries_top_25
 ```
 
 ## Graphical analysis
 
-It is clear from the graph that most of the top 25 wine consumers in the world are in Europe, out of which the French seem to drinking the most amount of wine (well, that came as no surprise). 
+It is clear from the graph that most of the top 25 wine consumers in the world are in Europe, out of which the French seem to drinking the most amount of wine (did that come as a surprise?).
 
-What's interesting to note is that the 1st and the 25th largest wine consuming countries in the world vary significantly in their consumptions, i.e. in Ireland the wine consumption is ~ 44% of that consumed in France. 
+What's interesting to note is that the 1st and the 25th largest wine consuming countries in the world vary significantly in their consumption, i.e. in Ireland the wine consumption is ~ 44% of that consumed in France. 
 
 **INTERESTING FACT**
 
-Did you know that the reason why the French can eat vast amounts of egg, butter, cheese and still have a comparatively low heart disease is because their wine consumption (in moderation) nullifies the "bad" cholestrol production in the body. This is famously known as the "French Paradox".
+Did you know that the reason why the French can eat vast amounts of egg, butter, cheese and still have a comparatively low heart disease is because their wine consumption (in moderation) nullifies the "bad" cholesterol production in the body. This is famously known as the "French Paradox".
 
 **TIP**
 

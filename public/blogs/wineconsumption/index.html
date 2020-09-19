@@ -258,7 +258,7 @@ glimpse(drinks)</code></pre>
 </tbody>
 </table>
 <p>From the skim function, we can see that there were no missing values, the variables were either integers, characters or doubles.</p>
-<p>We now plot and take a look at the top 25 wine consuming countries in thr world.</p>
+<p>We now plot and take a look at the top 25 wine consuming countries in the world.</p>
 <pre class="r"><code># Filtering the data to get only wine drinkers
 
 wine_25 &lt;- drinks %&gt;% 
@@ -272,14 +272,14 @@ wine_countries_top_25 &lt;- ggplot(wine_25, aes(x=wine_servings, y=reorder(count
   geom_text(aes(label = wine_servings, hjust = -0.5)) +
   labs(title = &quot;Top 25 wine consuming countries in the world&quot;, x=&quot;Wine servings&quot;, y=&quot;Country&quot;) +
   theme_bw()</code></pre>
-<p><img src="/blogs/Wine_Consumption_files/figure-html/hillary_trump_top10%20-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p><img src="/blogs/Wine_Consumption_files/figure-html/wine_consumption-1.png" width="1152" style="display: block; margin: auto;" /></p>
 </div>
 <div id="graphical-analysis" class="section level2">
 <h2>Graphical analysis</h2>
-<p>It is clear from the graph that most of the top 25 wine consumers in the world are in Europe, out of which the French seem to drinking the most amount of wine (well, that came as no surprise).</p>
-<p>What’s interesting to note is that the 1st and the 25th largest wine consuming countries in the world vary significantly in their consumptions, i.e. in Ireland the wine consumption is ~ 44% of that consumed in France.</p>
+<p>It is clear from the graph that most of the top 25 wine consumers in the world are in Europe, out of which the French seem to drinking the most amount of wine (did that come as a surprise?).</p>
+<p>What’s interesting to note is that the 1st and the 25th largest wine consuming countries in the world vary significantly in their consumption, i.e. in Ireland the wine consumption is ~ 44% of that consumed in France.</p>
 <p><strong>INTERESTING FACT</strong></p>
-<p>Did you know that the reason why the French can eat vast amounts of egg, butter, cheese and still have a comparatively low heart disease is because their wine consumption (in moderation) nullifies the “bad” cholestrol production in the body. This is famously known as the “French Paradox”.</p>
+<p>Did you know that the reason why the French can eat vast amounts of egg, butter, cheese and still have a comparatively low heart disease is because their wine consumption (in moderation) nullifies the “bad” cholesterol production in the body. This is famously known as the “French Paradox”.</p>
 <p><strong>TIP</strong></p>
 <p>Drink to your heart’s content to keep your heart healthy (like the French), but in moderation!</p>
 </div>
