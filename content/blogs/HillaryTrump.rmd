@@ -75,6 +75,8 @@ CA_contributors_2016_cleaned <- CA_contributors_2016 %>%
   summarise(total_amt = sum(contb_receipt_amt)) %>% 
   select(candidate = cand_nm, city = primary_city, money_raised = total_amt)
 
+# Skimming through our cleaned
+skim(CA_contributors_2016_cleaned)
 ```
 
 We then plotted Trump and Hillary's top 10 contribution cities graphs separately using the following R code.
