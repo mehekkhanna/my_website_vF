@@ -57,7 +57,9 @@ approval_polllist <- read_csv(here::here('data', 'approval_polllist.csv'))
 approval_polllist_cleaned <- approval_polllist %>% 
   mutate(modeldate = mdy(modeldate), startdate = mdy(startdate), enddate = mdy(enddate), createddate = mdy(createddate), timestamp = parse_date_time(timestamp, orders = "hmsdmy"))
 
+# Using the skim and glimpse functions to understand our data better
 glimpse(approval_polllist_cleaned)
+skim(approval_polllist_cleaned)
 ```
 
 We now create a plot to calculate the average net approval rate (approve - disapprove) for each week since he got into office since 2017. To analyse our dataset better, we also plot the 95% confidence interval for each of the points.
