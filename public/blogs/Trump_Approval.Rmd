@@ -50,6 +50,7 @@ library(wbstats)
 To start with out analysis we load the approval pollist data available on fivethirtyeight.com This is followed by the standard process of data cleaning to fix dates from characters to a more suitable format. 
 
 ```{r, cache=TRUE}
+
 # Import approval polls data
 approval_polllist <- read_csv(here::here('data', 'approval_polllist.csv'))
 
@@ -60,6 +61,7 @@ approval_polllist_cleaned <- approval_polllist %>%
 # Using the skim and glimpse functions to understand our data better
 glimpse(approval_polllist_cleaned)
 skim(approval_polllist_cleaned)
+
 ```
 
 We now create a plot to calculate the average net approval rate (approve - disapprove) for each week since he got into office since 2017. To analyse our dataset better, we also plot the 95% confidence interval for each of the points.
