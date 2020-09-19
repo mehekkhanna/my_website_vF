@@ -68,7 +68,7 @@ We now create a plot to calculate the average net approval rate (approve - disap
 
 alpha <- 0.05
 
-# Cleaning our data and summarising the statistics needed to calulculate confidence intervals
+# Cleaning our data and summarising the statistics needed to calculate confidence intervals
 
 approval_pollist_summary <- approval_polllist_cleaned %>% 
   filter(subgroup=="Voters") %>% 
