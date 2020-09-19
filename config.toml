@@ -139,7 +139,7 @@ disqusShortname = ""
   [params.two]
     enable = true
     title = "My library"
-    subtitle = """ This website is a repository of the projects undertaken in R during the Masters in Analytics and Management course"""
+    subtitle = """ This website is a repository of the projects undertaken in R during the Masters in Analytics and Management course, hope you enjoy reading through some of the analysis we carried out!"""
     buttonText = "Get Started"
     url = "blogs"
 
