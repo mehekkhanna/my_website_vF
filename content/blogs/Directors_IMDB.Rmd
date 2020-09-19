@@ -144,7 +144,7 @@ imdb_spielberg_and_burton
 
 ## Graphical analysis
 
-As we can see in the plot, there is an overlap in the confidence intervals for both directors. Hence, we reject the null hypothesis in favour of the alternate hypothesis and conclude that there is a significant difference in the mean ratings of Steven Spielberg and Tim Burton.
+As we can see in the plot, there is an overlap in the confidence intervals for both directors. Hence, we reject the null hypothesis in favour of the alternate hypothesis and conclude that there is a significant difference in the mean ratings of Steven Spielberg and Tim Burton. Clearly, Steven Spielberg's movies are more highly rated as compared to Tim Burton's.
 
 **DID YOU KNOW?**
 
