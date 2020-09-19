@@ -92,7 +92,7 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "The Presidential Race"
+      title = "The US Presidential Race"
       subtitle = "Top 10 cities in California with the highest amount (in $) of voter contribution (Hillary vs. Trump)"
       image = "blogs/pic_election.jpg"
       url = "blogs/HillaryTrump"
