@@ -55,7 +55,7 @@ We start off by loading our data frame movies.csv
 ```{r load-data, warning=FALSE, message=FALSE}
 
 # Data loading
-movies <- read_csv(here::here("data", "movies.cs"))
+movies <- read_csv(here::here("data", "movies.csv"))
 glimpse(movies) 
 skim(movies)
 
